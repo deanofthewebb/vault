@@ -1,0 +1,59 @@
+<%= form_for(@secret_file, :html => { :multipart => true}) do |f| %>
+<% set_params_delete_var_false %>
+
+<% provide(:title, 'Upload File') %>
+
+<h1>Edit Secret File</h1>
+<%= render 'layouts/filechecks' %>
+
+<div class="field">
+  <%= f.label(:environment, "*Environment: ")%><br/>
+  <%= f.text_field :environment %>
+</div>
+
+<div class="field">
+  <%= f.label(:role, "*Role: ")%><br/>
+  <%= f.text_field :role %>
+</div>
+ <div class="field">
+     <%= f.label(:owner, "*Owner: ")%><br/>
+    <%= autocomplete_field :owner,"", autocomplete_cb_employees_network_name_cb_employees_path, :value => @secret_file.login.gsub("cb\\","")%>
+    </div>
+    <div id='hide_attachment'><%= link_to(@secret_file.file_name, :controller => 'SecretFiles', :action => 'show', :id => @secret_file.id)%>
+  <input type="button" id='click' value="Delete" />
+</div>
+<div id='show_attachment'>
+  <div class="field" file_selector="true">
+    <%= f.label(:attachment, "Upload file")%><br/>
+    <%= f.file_field :attachment %>
+  </div>
+</div>
+<br />
+
+<%= f.hidden_field :edit_form, :value => true %>
+<div class="actions">
+  <%= f.submit %>
+</div>
+<%= link_to 'Back', secret_files_path, id: "backbutton" , :class => "navigation_link"%>
+</div>
+<% end %>
+
+
+
+
+<script>
+  $('#click').click(function()
+  {
+    if($(hide_attachment).is(":visible")){
+      $("#hide_attachment").hide();
+      $("#show_attachment").show();
+      $.post('/set_delete_var_true');
+    }
+  });
+
+  $('.navigation_link').click(function()
+  {
+    var original_filename = $('#hide_attachment').text().trim();
+    $.post('/delete_files', {file_name: original_filename});
+  });
+</script>

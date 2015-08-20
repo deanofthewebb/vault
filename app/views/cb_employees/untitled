@@ -1,0 +1,114 @@
+<div style="text-align:justify">
+  <tr><strong>User</strong>: <%= data[:full_name] %></tr><br/>
+  <tr><strong>Email</strong>: <%= data[:email]%></tr><br/>
+  <tr><strong>Is A Manager?</strong>: <%= data[:is_manager] %> </tr><br/>
+  </div>
+<br/>
+<div>
+  <%= button_to "Edit File_Access", "edit_access/", params[:data] => data[:coworkers] %>
+</div>
+<br/>
+<div>
+<%= button_to "Reset Access", "reset/" %>
+<br/>
+
+<div>
+<table class="table table-striped">
+<caption style="text-align: left"><strong>Manager</strong></caption>
+<thead>
+<tr>
+  <th> Full Name </th>
+  <th> Network Name</th>
+  <th> Job Title</th>
+</tr>
+
+</thead>
+<tbody class="tablebody">
+  <tr>
+  <td><%= data[:manager][:full_name] %> </td>
+  <td><%= data[:manager][:network_name]%></td>
+  <td><%= data[:manager][:job_title]%></td>
+  </tr>
+</tbody>
+</table>
+</div>
+<br/>
+
+<% if !data[:coworkers].empty? %>
+<div>
+<table class="table table-striped">
+<caption style="text-align: left"><strong>Coworker/Same-Manager</strong></caption>
+<thead>
+<tr>
+  <th> Full Name </th>
+  <th> Network Name</th>
+  <th> Job Title</th>
+</tr>
+</thead>
+<tbody class="tablebody">
+  <% data[:coworkers].each do |f| %>
+  <tr>
+  <td><%= f[:full_name] %> </td>
+  <td><%= f[:network_name]%></td>
+  <td><%= f[:job_title]%></td>
+  </tr>
+  <% end %>
+</tbody>
+</table>
+</div>
+<br/>
+<% end %>
+
+<% if data[:subordinates].length > 1 %>
+<div>
+  <table class="table table-striped" >
+  <caption style="text-align: left"><strong>Subordinates</strong></caption>
+  <thead>
+  <tr>
+  <th> Full Name </th>
+  <th> Network Name</th>
+  <th> Job Title</th>
+  </tr>
+  </thead>
+  <tbody class="tablebody">
+  <% data[:subordinates].each do |f| %>
+  <tr>
+  <% if f[:network_name] != data[:network_name] %>
+  <td><%= f[:full_name] %></td>  
+  <td><%= f[:network_name]%></td>
+  <td><%= f[:job_title]%></td>
+  </tr>
+  <%end%>
+  <% end %>
+  </tbody>
+  </table>
+  </div>
+  <% end %>
+
+  <% if !data[:additional_members].empty? %>
+<div>
+  <table class="table table-striped" >
+  <caption style="text-align: left"><strong>Additional Members</strong></caption>
+  <thead>
+  <tr>
+  <th> Full Name </th>
+  <th> Network Name</th>
+  <th> Job Title</th>
+  </tr>
+  </thead>
+  <tbody class="tablebody">
+  <% data[:additional_members].each do |f| %>
+  <tr>
+  <% if f[:network_name] != data[:network_name] %>
+  <td><%= f[:full_name] %></td>  
+  <td><%= f[:network_name]%></td>
+  <td><%= f[:job_title]%></td>
+  <td><%= link_to 'remove', :controller => 'secret_files', :action => 'filter_viewers', :added_user => "cb\\#{f[:network_name]}", :recursive => "0", :add => "remover"%></td>
+  </tr>
+  <%end%>
+  <% end %>
+  </tbody>
+  </table>
+  </div>
+  <% end %>
+ 

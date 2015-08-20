@@ -1,0 +1,30 @@
+<% provide(:title, 'Secret Files') %>
+<h1>Secret Files</h1>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>File Name</th>
+      <th>Environment</th>
+      <th>Role</th>
+      <th>Owner</th>
+      <th>Creation Date</th>
+      <th>Updated Date</th>
+    </tr>
+  </thead>
+  <tbody class="tablebody">
+    <% @secret_files.each do |secret_file| %>
+      <tr>
+        <td><%= secret_file.file_name %></td>
+        <td><%= secret_file.environment %></td>
+        <td><%= secret_file.role %></td>
+        <td><%= secret_file.login %></td>
+        <td><%= secret_file.created_at %></td>
+        <td><%= secret_file.updated_at %></td>
+        <td><%= link_to 'Edit', edit_secret_file_path(secret_file) %></td>
+        <td><%= link_to 'Destroy', secret_file, method: :delete ,data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />

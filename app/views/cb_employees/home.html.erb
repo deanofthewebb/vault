@@ -1,0 +1,142 @@
+<% provide(:title, 'Home') %>
+<% manager = @current_cb_employee.first.manager %>
+<% coworkers = Array.new(@current_cb_employee.first.coworker) %>
+<% subordinates = Array.new(@current_cb_employee.first.subordinates) %>
+<% additional_member = Array.new(@current_cb_employee.first.additional_members) %>
+
+<div class="center hero-unit">
+  <h1 id="welcome">Welcome to Vault</h1>
+ <h2>
+    This application encrypts and stores secret files to be used on CB servers -
+    <a href="http://pireport1.atl.careerbuilder.com/Blog/rest-services/vault-walkthrough">Vault Tutorial</a>
+  </h2>
+  <h2>The following users have access to the files you create.</h2>
+  </div>
+
+<table>
+<tr>
+  <td><%= button_to "Edit Access", "edit_access/", params[:data] => @current_cb_employee %></td>
+  <td><%= button_to "Reset Access", "reset_access/" %></td>
+</tr></table>
+<br/>
+
+<caption stryle="text-align: left"><strong>Current User:</strong></caption>
+<div>
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Full Name</th>
+      <th>Network Name</th>
+      <th>Job Title</th>
+      <th>Email</th>
+      <th>Is Manager?</th>
+    </tr>
+  </thead>
+  <tbody class="tablebody">
+   <td><%= @current_cb_employee.first.full_name %></td>
+   <td><%= @current_cb_employee.first.network_name %></td>
+   <td><%= @current_cb_employee.first.job_title %></td>
+   <td><%= @current_cb_employee.first.email %></td>
+   <td><%= @current_cb_employee.first.is_manager %></td>
+  </tbody>
+</table>
+</div>
+<div>
+<table class="table table-striped">
+<caption style="text-align: left"><strong>Manager</strong></caption>
+<thead>
+<tr>
+  <th> Full Name </th>
+  <th> Network Name</th>
+  <th> Job Title</th>
+</tr>
+
+</thead>
+<tbody class="tablebody">
+  <tr>
+  <td><%= manager[:full_name] %> </td>
+  <td><%= manager[:network_name]%></td>
+  <td><%= manager[:job_title]%></td>
+  </tr>
+</tbody>
+</table>
+</div>
+<br/>
+
+<% if !coworkers.empty? %>
+<div>
+<table class="table table-striped">
+<caption style="text-align: left"><strong>Coworker/Same-Manager</strong></caption>
+<thead>
+<tr>
+  <th> Full Name </th>
+  <th> Network Name</th>
+  <th> Job Title</th>
+</tr>
+</thead>
+<tbody class="tablebody">
+  <% coworkers.each do |coworker| %>
+  <tr>
+  <td><%= coworker[:full_name] %> </td>
+  <td><%= coworker[:network_name]%></td>
+  <td><%= coworker[:job_title]%></td>
+  </tr>
+  <% end %>
+</tbody>
+</table>
+</div>
+<br/>
+<% end %>
+
+<% if (subordinates.length > 1)%>
+<div>
+  <table class="table table-striped" >
+  <caption style="text-align: left"><strong>Subordinates</strong></caption>
+  <thead>
+  <tr>
+  <th> Full Name </th>
+  <th> Network Name</th>
+  <th> Job Title</th>
+  </tr>
+  </thead>
+  <tbody class="tablebody">
+  <% subordinates.each do |sub| %>
+  <tr>
+  <% if sub[:network_name] != @current_cb_employee.first.network_name %>
+  <td><%= sub[:full_name] %></td>  
+  <td><%= sub[:network_name]%></td>
+  <td><%= sub[:job_title]%></td>
+  </tr>
+  <%end%>
+  <% end %>
+  </tbody>
+  </table>
+  </div>
+  <%end%>
+
+ <% if !additional_member.empty? %>
+<div>
+  <table class="table table-striped" >
+  <caption style="text-align: left"><strong>Additional Members</strong></caption>
+  <thead>
+  <tr>
+  <th> Full Name </th>
+  <th> Network Name</th>
+  <th> Job Title</th>
+  </tr>
+  </thead>
+  <tbody class="tablebody">
+  <% additional_member.each do |f| %>
+  <tr>
+  <% if f[:network_name] != @current_cb_employee.first.network_name %>
+  <td><%= f[:full_name] %></td>  
+  <td><%= f[:network_name]%></td>
+  <td><%= f[:job_title]%></td>
+  <td><%= link_to 'remove', :controller => 'cb_employees', :action => 'filter_viewers', :added_user => "#{f[:network_name]}", :recursive => "0", :add => "remover"%></td>
+  </tr>
+  <%end%>
+  <% end %>
+  </tbody>
+  </table>
+  </div>
+  <% end %>

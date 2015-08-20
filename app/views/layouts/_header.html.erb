@@ -1,0 +1,14 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+<div class="navbar-inner">
+  <div class="container">
+    <%= link_to "Vault", home_path, id: "logo", :class => "navigation_link" %>
+    <nav>
+    <ul class="nav pull-right">
+      <li><%= link_to "Home",    home_path , :class =>"navigation_link", :id => "homepage" %></li>
+      <li><%= link_to "List Secret Files",    index_path , :class => "navigation_link", :id => "list_files" %></li>
+      <li><%= link_to 'Upload New File', new_secret_file_path , :class => "navigation_link", :id => "new_upload" %></li>
+    </ul>
+    </nav>
+  </div>
+</div>
+</header>

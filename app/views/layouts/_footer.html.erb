@@ -1,0 +1,19 @@
+<footer class="footer">
+<small>
+  <% if user_signed_in? %>
+    Logged in as <strong><%= CbEmployeesController.full_username(current_user.login)%></strong>
+  <% end %>
+</small>
+<nav>
+<ul>
+  <li><%= link_to "About", about_path , :class => "navigation_link"%></li>
+  <li><%= link_to "Help", help_path , :class => "navigation_link"%></li>
+  <% if user_signed_in? %>
+    <li><%= link_to "Logout", destroy_user_session_path, method: :get, :class => 'navbar-link navigation_link'  %></li>
+  <% else %>
+    <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link navigation_link'  %></li>
+  <% end %>
+  <li><a href="http://pireport1.atl.careerbuilder.com/blog" class="navigation_link">PI Blog</a></li>
+</ul>
+</nav>
+</footer>

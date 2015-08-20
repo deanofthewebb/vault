@@ -1,0 +1,300 @@
+{
+				"user" =>
+				{
+					:employee_id => "000",
+					:network_name => "user",
+					:full_name => "Colin Field",
+					:email => "user@test.com",
+					:job_title => "test",
+					:is_manager => true,
+					:coworkers => [],
+					:subordinates =>
+					[
+						{
+							:network_name => "user",
+							:full_name => "Colin Field",
+							:job_title => "test"
+						},
+						{
+							:network_name => "wboatin",
+							:full_name => "William Boatin",
+							:job_title => "test"
+						},
+						{
+							:network_name => "dewebb",
+							:full_name => "Dean Webb",
+							:job_title => "test"
+						},
+						{
+							:network_name => "cyoon",
+							:full_name => "Caleb Yoon",
+							:job_title => "test"
+						},
+						{
+							:network_name => "elatimer",
+							:full_name => "Ethan Latimer",
+							:job_title => "test"
+						},
+						{
+							:network_name => "asomda",
+							:full_name => "Arnaud Somda",
+							:job_title => "test"
+						},
+						{
+							:network_name => "atardo",
+							:full_name => "Amy Tardo",
+							:job_title => "test"
+						}
+					]
+				},
+				"wboatin" =>
+				{
+					:employee_id => "001",
+					:network_name => "wboatin",
+					:full_name => "William Boatin",
+					:email => "wboatin@test.com",
+					:job_title => "test",
+					:is_manager => true,
+					:manager => 
+						{
+							:network_name => "user",
+							:full_name => "Colin Field",
+							:job_title => "test"
+						},
+					:coworkers => 
+						[
+							{
+								:network_name => "atardo",
+								:full_name => "Amy Tardo",
+								:job_title => "test"
+							}
+						],
+					:subordinates =>
+					[
+						{
+							:network_name => "wboatin",
+							:full_name => "William Boatin",
+							:job_title => "test"
+						},
+						{
+							:network_name => "dewebb",
+							:full_name => "Dean Webb",
+							:job_title => "test"
+						},
+						{
+							:network_name => "cyoon",
+							:full_name => "Caleb Yoon",
+							:job_title => "test"
+						},
+						{
+							:network_name => "elatimer",
+							:full_name => "Ethan Latimer",
+							:job_title => "test"
+						},
+						{
+							:network_name => "asomda",
+							:full_name => "Arnaud Somda",
+							:job_title => "test"
+						}
+					]
+
+				},
+				"atardo" =>
+				{
+					:employee_id => "002",
+					:network_name => "atardo",
+					:full_name => "Amy Tardo",
+					:email => "atardo@test.com",
+					:job_title => "test",
+					:is_manager => false,
+					:manager => 
+						{
+							:network_name => "user",
+							:full_name => "Colin Field",
+							:job_title => "test"
+						},
+					:coworkers => 
+						[
+							{
+								:network_name => "wboatin",
+								:full_name => "William Boatin",
+								:job_title => "test"
+							}
+						],
+					:subordinates =>
+						[
+							{
+								:network_name => "atardo",
+								:full_name => "Amy Tardo",
+								:job_title => "test"
+							}
+						]
+				},
+				"dewebb" =>
+				{
+					:employee_id => "003",
+					:network_name => "dewebb",
+					:full_name => "Dean Webb",
+					:email => "dewebb@test.com",
+					:job_title => "test",
+					:is_manager => false,
+					:manager => 
+						{
+							:network_name => "wboatin",
+							:full_name => "William Boatin",
+							:job_title => "test"
+						},
+					:coworkers => 
+						[
+							{
+								:network_name => "cyoon",
+								:full_name => "Caleb Yoon",
+								:job_title => "test"
+							},
+							{
+								:network_name => "elatimer",
+								:full_name => "Ethan Latimer",
+								:job_title => "test"
+							},
+							{
+								:network_name => "asomda",
+								:full_name => "Arnaud Somda",
+								:job_title => "test"
+							}
+						],
+					:subordinates =>
+						[
+							{
+							:network_name => "dewebb",
+							:full_name => "Dean Webb",
+							:job_title => "test"
+							}
+						]
+
+				},
+				"cyoon" =>
+				{  
+					:employee_id => "004",
+					:network_name => "cyoon",
+					:full_name => "Caleb Yoon",
+					:email => "cyoon@test.com",
+					:job_title => "test",
+					:is_manager => false,
+					:manager => 
+						{
+							:network_name => "wboatin",
+							:full_name => "William Boatin",
+							:job_title => "test"
+						},
+					:coworkers => 
+						[
+							{
+								:network_name => "dewebb",
+								:full_name => "Dean Webb",
+								:job_title => "test"
+							},
+							{
+								:network_name => "elatimer",
+								:full_name => "Ethan Latimer",
+								:job_title => "test"
+							},
+							{
+								:network_name => "asomda",
+								:full_name => "Arnaud Somda",
+								:job_title => "test"
+							}
+						],
+					:subordinates =>
+						[
+							{
+								:network_name => "cyoon",
+								:full_name => "Caleb Yoon",
+								:job_title => "test"
+							}
+						]
+				},
+				"elatimer" =>
+				{ 
+					:employee_id => "005",
+					:network_name => "elatimer",
+					:full_name => "Ethan Latimer",
+					:email => "elatimer@test.com",
+					:job_title => "test",
+					:is_manager => false,
+					:manager => 
+						{
+							:network_name => "wboatin",
+							:full_name => "William Boatin",
+							:job_title => "test"
+						},
+					:coworkers => 
+						[
+							{
+								:network_name => "dewebb",
+								:full_name => "Dean Webb",
+								:job_title => "test"
+							},
+							{
+								:network_name => "cyoon",
+								:full_name => "Caleb Yoon",
+								:job_title => "test"
+							},
+							{
+								:network_name => "asomda",
+								:full_name => "Arnaud Somda",
+								:job_title => "test"
+							}
+						],
+					:subordinates =>
+						[
+							{
+								:network_name => "elatimer",
+								:full_name => "Ethan Latimer",
+								:job_title => "test"
+							}
+						] 
+
+				},
+				"asomda" =>
+				{ 
+					:employee_id => "006",
+					:network_name => "asomda",
+					:full_name => "Arnaud Somda",
+					:email => "asomda@test.com",
+					:job_title => "test",
+					:is_manager => false,
+					:manager => 
+						{
+							:network_name => "wboatin",
+							:full_name => "William Boatin",
+							:job_title => "test"
+						},
+					:coworkers => 
+						[
+							{
+								:network_name => "dewebb",
+								:full_name => "Dean Webb",
+								:job_title => "test"
+							},
+							{
+								:network_name => "cyoon",
+								:full_name => "Caleb Yoon",
+								:job_title => "test"
+							},
+							{
+								:network_name => "elatimer",
+								:full_name => "Ethan Latimer",
+								:job_title => "test"
+							}
+						],
+					:subordinates =>
+						[
+							{
+								:network_name => "asomda",
+								:full_name => "Arnaud Somda",
+								:job_title => "test"
+							}
+						]  
+
+				}
+			}

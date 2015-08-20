@@ -1,0 +1,11 @@
+<!-- <p id="notice"><%= notice %></p>
+ -->
+
+ <% if @secret_file.attachment? %>
+ <%= image_tag @secret_file.attachment.url %>
+</br>
+<% link_to @secret_file.attachment.url, @secret_file.attachment.url %>
+<% end %>
+
+<%= link_to 'Edit', edit_secret_file_path(@secret_file) %> |
+<%= link_to 'Back', secret_files_path %>

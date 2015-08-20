@@ -1,0 +1,24 @@
+
+<% provide(:title, 'Edit Access Page') %>
+
+<div class="center hero-unit">
+<h2> Edit Access To Your Files </h2>
+</div>
+
+<%=form_tag controller:'secret_files', :action=>'filter_viewers' do%>
+<div class="field" style="text-align: left">
+<%= label(:user, "* User: ")%>
+<%= select_tag :added_user, options_for_select(SecretFilesController.get_technology_hash.collect {|p, k| "cb\\#{k[:network_name]}"}.sort, :selected => params[:added_user]) %>
+</div><br/>
+<div class="field" style="text-align: left">
+<%= label(:subordinates, "* Include_subordinates?:")%>
+<%= check_box_tag :recursive%>
+</div><br/>
+<div class="field" style="text_align: left">
+Add
+<%= radio_button_tag 'add', 'adder'%>
+Remove
+<%= radio_button_tag 'add', 'remover'%>
+</div>
+<%= submit_tag :Submit %>
+<% end %>

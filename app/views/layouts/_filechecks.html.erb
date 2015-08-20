@@ -1,0 +1,26 @@
+<% if params[:error_duplicate_info] -%>
+    <div id="flash_error">
+    	<p>I am sorry but there is already an entry with that combination of Name and Environment. Please try again! owner(s) of the current file(s): <%= params[:user] %> </p>
+    </div>
+<% end %>
+<% if params[:error_nil_file] -%>
+    <div id="flash_error">
+    	<p>Please attach a file before uploading!</p>
+    </div>
+<% end %>
+<% if params[:error_generic] -%>
+    <div id="flash_error">
+    	<p>Something went wrong, please try again!</p>
+    </div>
+<% end %>
+<% if params[:error_empty_fields] -%>
+	<div id="flash_error">
+		<p>Please make sure the Role/Environment field isn't empty</p>
+	</div>
+<% end %>
+<% if params[:error_duplicate_filename] -%>
+    <div id="flash_error">
+        <p>The filename must be unique if being added under _default/already existing under _default environment.
+        owner(s) of the file(s): <%= params[:user] %> </p>
+    </div>
+<% end %>

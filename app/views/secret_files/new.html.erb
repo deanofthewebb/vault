@@ -1,0 +1,34 @@
+<%= form_for(@secret_file, :html => { :multipart => true}) do |f| %>
+  <% set_params_delete_var_false %>
+  <% provide(:title, 'Upload File') %>
+  <h1>New Secret File</h1>
+  <%= render 'layouts/filechecks' %>
+
+    <div class="field">
+      <%= f.label(:environment, "*Environment: ")%><br/>
+      <%= f.text_field :environment %>
+    </div>
+    <div class="field">
+      <%= f.label(:role, "*Role: ")%><br/>
+      <%= f.text_field :role %>
+    </div>
+    <div class="field">
+    <%= f.label(:owner, "*Owner: ")%><br/>
+    <%= autocomplete_field :owner,"", autocomplete_cb_employees_network_name_cb_employees_path, :value => current_user.login.gsub("cb\\","")%>
+    </div>
+
+    <div class="field">
+      <%= f.label(:attachment, "Upload File: ")%><br/>
+      <%= f.file_field :attachment %>
+    </div>
+    <br/>
+
+    <div class="actions">
+      <%= f.submit%>
+    </div>
+
+    <%= link_to 'Back', secret_files_path %>
+  </div>
+
+<% end %>
+
